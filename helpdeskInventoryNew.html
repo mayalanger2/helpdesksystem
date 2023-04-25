@@ -1,0 +1,707 @@
+<!doctype html>
+<html>
+<!-- InstanceBegin template="/Templates/helpdeskInventoryTemplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="UTF-8">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Help Desk Inventory</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!--IMPORTS-START--> 
+<!--BOOTSTRAP-5-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--BOOTSTRAP-TABLE-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.css">
+<!--END-OF-BOOTSTRAP-TABLE--> 
+<!--TABLE-FILTER--> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.css"></script> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.css"></script> 
+<!--END-OF-TABLE-FILTER--> 
+<!--MULTISELECT-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css">
+<!--END-OF-MULTISELECT--> 
+<!--MY-CSS-->
+<link rel="stylesheet" href="helpdeskInventory.css">
+
+<!--END-OF-MY-CSS--> 
+
+<!--IMPORTS-END--> 
+
+<!--SCRIPT-START--> 
+<script>
+	$(function() {
+		$('#deviceTable').bootstrapTable()
+	})
+</script> 
+<!--SCRIPT-END-->
+<!-- InstanceEndEditable -->
+</head>
+<body>
+<!--MAIN-START--------------------------------------------------------------------------------->
+
+<div class="container-fluid" id="mainContainer"> <!--START-OF-CONTAINER-->
+  <div class="row" id="mainRow"> <!--START-OF-ROW-DIV-->
+    
+    <nav class="navbar"> <!--START-OF-NAVBAR-->
+      <div class="container-fluid"> <a class="navbar-brand" href="#"> <img src="lpsLogoWhite.png" alt="" width="50px" height="50px"> </a>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addLocationModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+            <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H3Zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Z"/>
+          </svg>
+          Locations</a></li>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addFleetModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
+            <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+          </svg>
+          Fleets</a></li>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+          </svg>
+          Roles</a></li>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addFundingModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+            <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
+          </svg>
+          Funding</a></li>
+      </div>
+    </nav>
+    <!--END-OF-NAVBAR-->
+    
+    <div class="col leftCol"> <!--START-OF-LEFT-COL-->
+      <div class="leftColHeader card-text-center"> <!--START-OF-LEFT-COL-HEADER-->
+        
+        <div class="card-header"> <!--START-OF-CARD-HEADER--> 
+          <!-- InstanceBeginEditable name="cardHeaderEdit" -->
+          <ul class="nav nav-pills card-header-pills navPillsColor">
+            <li class="nav-item">
+              <button class="nav-link active" id="device-tab" data-bs-toggle="tab" type="button" role="tab" data-bs-target="#deviceTab">Add Device</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="user-tab" data-bs-toggle="tab" type="button" role="tab" data-bs-target="#userTab">Add User</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="owns-tab" data-bs-toggle="tab" type="button" role="tab" data-bs-target="#ownsTab">Check Out Device</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="ticket-tab" data-bs-toggle="tab" type="button" role="tab" data-bs-target="#ticketTab">Submit Tickets</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="tag-tab" data-bs-toggle="tab" type="button" role="tab" data-bs-target="#tagTab">Pin Tags</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="requistion-tab" data-bs-toggle="tab" type="button" role="tab" data-bs-target="#requisitionTab">Add Requisition</button>
+            </li>
+          </ul>
+          <!-- InstanceEndEditable --> </div>
+        <!--END-OF-CARD-HEADER-->
+        
+        <div class="card-body tab-content"> <!--START-OF-CARD-BODY--> 
+          <!-- InstanceBeginEditable name="cardBodyEdit" -->
+          <div id="deviceTab" class="tab-pane fade show active" role="tabpanel"> <!--START-OF-DEVICE-TAB-->
+            <h3>Device Information</h3>
+            <div class="row">
+              <div class="col">
+                <label for="addDeviceSerial" class="form-label">Serial Number*</label>
+                <input type="text" id="addDeviceSerial" class="form-control" placeholder="54KJJH2">
+              </div>
+              <div class="col">
+                <label for="addDeviceAsset" class="form-label">Asset Tag*</label>
+                <input type="text" id="addDeviceAsset" class="form-control" placeholder="336340">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addDeviceLocation" class="form-label">Location*</label>
+                <select class="form-select" id="addDeviceLocation">
+                  <option value="1">SJDLC</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addDeviceMac" class="form-label">MAC Address</label>
+                <input type="text" id="addDeviceMac" class="form-control" placeholder="50:9A:4C:44:55:7A">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addDeviceModel" class="form-label">Model*</label>
+                <select class="form-select" id="addDeviceModel">
+                  <option value="1">Apple MacBook Air (13-inch M1, 2020)</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addDeviceOS" class="form-label">Operating System*</label>
+                <select class="form-select" id="addDeviceOS">
+                  <option value="1">Windows</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addDeviceFleet" class="form-label">Fleet Name</label>
+                <select class="form-select" id="addDeviceFleet">
+                  <option value="1">Building Purchased</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addDeviceFunding" class="form-label">Funding Source</label>
+                <select class="form-select" id="addDeviceFunding">
+                  <option value="1">Federal Programs</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addDeviceRole" class="form-label">Role</label>
+                <select class="form-select" id="addDeviceRole">
+                  <option value="1">Staff</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addDeviceRequisition" class="form-label">Requisition</label>
+                <select class="form-select" id="addDeviceRequisition">
+                  <option value="1">51554</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addDeviceStatus" class="form-label">Device Status*</label>
+                <select class="form-select" id="addDeviceStatus">
+                  <option selected value="checked in">Checked In</option>
+                  <option value="checked out">Checked Out</option>
+                  <option value="deploying">Deploying</option>
+                  <option value="surplused">Surplused</option>
+                  <option value="sold">Sold</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addDeviceDescription" class="form-label">Device Description</label>
+                <textarea class="form-control" id="addDeviceDescription"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-yes btn-form">-Add Device-</button>
+            </div>
+          </div>
+          <!--END-OF-DEVICE-TAB-->
+          
+          <div id="userTab" class="tab-pane fade" role="tabpanel"> <!--START-OF-USER-TAB-->
+            <h3>User Information</h3>
+            <div class="row">
+              <div class="col">
+                <label for="addUserUsername" class="form-label">LPS Username*</label>
+                <input type="text" id="addUserUsername" class="form-control" placeholder="jdoe5">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addUserFirstName" class="form-label">First Name</label>
+                <input type="text" id="addUserFirstName" class="form-control" placeholder="John">
+              </div>
+              <div class="col">
+                <label for="addUserLastName" class="form-label">Last Name</label>
+                <input type="text" id="addUserLastName" class="form-control" placeholder="Doe">
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-yes btn-form">-Add User-</button>
+            </div>
+          </div>
+          <!--END-OF-USER-TAB-->
+          
+          <div id="ownsTab" class="tab-pane fade" role="tabpanel"><!--START-OF-OWNS-TAB-->
+            <h3>Device Ownership</h3>
+            <div class="row">
+              <div class="col-5">
+                <label for="addOwnsUser" class="form-label">LPS Username*</label>
+                <select class="form-select" id="addOwnsUser">
+                  <option value="1">jdoe</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label for="addOwnsDevice" class="form-label">Associated Device*</label>
+                <select class="form-select" id="addOwnsDevice">
+                  <option value="1">54KJJH2</option>
+                </select>
+              </div>
+              <div class="col-1">
+                <div style="display: flex; align-items: center; justify-content: center; padding: 0px;">
+                  <label class="form-label" for="addOwnsEDRRP">EDRRP*</label>
+                </div>
+                <div class="form-check"> <span style="display: flex; align-items: center; justify-content: center; padding: 0px;">
+                  <input class="form-check-input customCheckbox" type="checkbox" value="" id="addOwnsEDRRP">
+                  </span> </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addOwnsStatus" class="form-label">Device Status*</label>
+                <select class="form-select" id="addOwnsStatus">
+                  <option selected value="checked in">Checked In</option>
+                  <option value="checked out">Checked Out</option>
+                  <option value="deploying">Deploying</option>
+                  <option value="surplused">Surplused</option>
+                  <option value="sold">Sold</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-yes btn-form">-Check Out Device-</button>
+            </div>
+          </div>
+          <!--END-OF-OWNS-TAB-->
+          
+          <div id="ticketTab" class="tab-pane fade" role="tabpanel"><!--START-OF-TICKET-TAB-->
+            <h3>Submit Tickets</h3>
+            <div class="row">
+              <div class="col">
+                <label for="addSubmitDevice" class="form-label">Associated Device*</label>
+                <select class="form-select" id="addSubmitDevice">
+                  <option value="1">54KJJH2</option>
+                </select>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <label for="addSubmitTicket" class="form-label">Ticket Name(s)*</label>
+                  <div class="col-10">
+                    <select class="selectpicker" data-style="multiselectColor" multiple id="addSubmitTicket" data-live-search="true">
+                      <option value="1">123123</option>
+                    </select>
+                  </div>
+                  <div class="col-2" style="display: flex; align-items: center; justify-content: center; padding: 0px;">
+                    <button type="button" class="btn btn-sm btn-yes" data-bs-toggle="modal" data-bs-target="#addTicketModal" style="margin: 0 !important;"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 15 15">
+                      <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5Zm4-1v1h1v-1H4Zm1 3v-1H4v1h1Zm7 0v-1h-1v1h1Zm-1-2h1v-1h-1v1Zm-6 3H4v1h1v-1Zm7 1v-1h-1v1h1Zm-7 1H4v1h1v-1Zm7 1v-1h-1v1h1Zm-8 1v1h1v-1H4Zm7 1h1v-1h-1v1Z"/>
+                    </svg>
+                    </span> <span>+</span></span> </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-yes btn-form">-Submit Tickets-</button>
+            </div>
+          </div>
+          <!--END-OF-TICKET-TAB-->
+          
+          <div id="tagTab" class="tab-pane fade" role="tabpanel"><!--START-OF-TAG-TAB-->
+            <h3>Tag Devices</h3>
+            <div class="row">
+              <div class="col">
+                <label for="addPinDevice" class="form-label">Associated Device*</label>
+                <select class="form-select" id="addPinDevice">
+                  <option value="1">54KJJH2</option>
+                </select>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <label for="addPinTag" class="form-label">Tag Name(s)*</label>
+                  <div class="col-10">
+                    <select class="selectpicker" data-style="multiselectColor" multiple id="addPinTag" data-live-search="true">
+                      <option value="1">ashley'sdesk</option>
+                    </select>
+                  </div>
+                  <div class="col-2" style="display: flex; align-items: center; justify-content: center; padding: 0px;">
+                    <button type="button" class="btn btn-sm btn-yes" data-bs-toggle="modal" data-bs-target="#addTagModal" style="margin: 0 !important;"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-tag-fill" viewBox="0 0 16 16">
+                      <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                    </span> <span>+</span></span> </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-yes btn-form">-Pin Tags-</button>
+            </div>
+          </div>
+          <!--END-OF-TAG-TAB-->
+          
+          <div id="requisitionTab" class="tab-pane fade" role="tabpanel"> <!--START-OF-REQUISITION-TAB-->
+            <h3>Requisition Information</h3>
+            <div class="row">
+              <div class="col">
+                <label for="addRequisitionNumber" class="form-label">Requisition Number*</label>
+                <input type="text" id="addRequisitionNumber" class="form-control" placeholder="40529">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="addRequisitionUser" class="form-label">Requestor/User*</label>
+                <select class="form-select" id="addRequisitionUser">
+                  <option value="1">jdoe</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="addRequisitionDate" class="form-label">Requisition Date*</label>
+                <input type="date" class="form-control" value="" id="addRequisitionUserDate" />
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-yes btn-form">-Add Requisition-</button>
+            </div>
+          </div>
+          <!--END-OF-REQUISITION-TAB--> 
+          
+          <!-- InstanceEndEditable --> </div>
+        <!--END-OF-CARD-BODY--> 
+        
+      </div>
+      <!--END-OF-LEFT-COL-HEADER-->
+      
+      <div id="deviceToolbar"> <!--START-OF-TOOLBAR--> 
+      </div>
+      <!--END-OF-TOOLBAR--> 
+      
+      <!--START-OF-TABLE-->
+      <table data-toggle="table" id="deviceTable" data-toolbar="#deviceToolbar" data-search="true" data-show-refresh="true" data-click-to-select="true" data-id-field="id" data-show-columns="true" data-filter-control="true" data-show-search-clear-button="true" data-filter-control-multiple-search="true" data-filter-control-multiple-search-delimiter="|">
+        <thead>
+          <!--TABLE-HEAD-->
+          <tr>
+            <th data-align="center">#</th>
+            <th data-align="center">Actions</th>
+            <!-- InstanceBeginEditable name="tableHeadEdit" -->
+            <th data-filter-control="input">Serial</th>
+            <th data-filter-control="input">Asset</th>
+            <th data-field="tableDeviceUser" data-filter-control="input">User</th>
+            <th data-field="tableDeviceStatus" data-filter-control="select" data-align="center">Status</th>
+            <th data-field="tableDeviceModel" data-filter-control="select">Model</th>
+            <th data-field="tableDeviceLocation" data-filter-control="select">Location</th>
+            <th data-field="tableDeviceTags" data-filter-control="input" data-title-tooltip="Use | to seperate multiple tags ex. ashley'sdesk|maya'sdesk">Tags</th>
+            <!-- InstanceEndEditable --> </tr>
+        </thead>
+        <!--END-OF-TABLE-HEAD-->
+        
+        <tbody>
+          <!--TABLE-BODY--> 
+        <!-- InstanceBeginEditable name="tableBodyEdit" -->
+        <tr>
+          <td>1</td>
+          <td><div class="d-grid gap-2">
+              <button type="button" class="btn btn-sm btn-neutral" data-bs-toggle="modal" style="margin: 0;">Edit</button>
+              <button type="button" class="btn btn-sm btn-no" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin: 0;">Delete</button>
+            </div></td>
+          <td>VCFHF7CXRN</td>
+          <td>397805</td>
+          <td>mlanger2</td>
+          <td>Checked In</td>
+          <td>Apple MacBook Air (13-inch M2, 2022)</td>
+          <td>SJDLC</td>
+          <td><span class="badge rounded-pill deviceTag">maya'sdesk</span> <span class="badge rounded-pill deviceTag">important</span></td>
+        </tr>
+        <!-- InstanceEndEditable -->
+        </tbody>
+        
+        
+        <!--END-OF-TABLE-BODY-->
+        
+      </table>
+      <!--END-OF-TABLE--> 
+    </div>
+    <!--END-OF-LEFT-COL-->
+    
+    <div class="col rightCol d-none d-xl-block d-xxl-block"><!--START-OF-RIGHT-COL--> 
+      <!-- InstanceBeginEditable name="rightColEdit" -->
+      <div id="deviceDetails"> <!--START-OF-DEVICE-DETAILS--> 
+        <!--<img src="LPS Logo - just the L.png" class="card-img-top" alt="...">-->
+        <div class="card card-body" id="deviceDetailsCard"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; background-color: #6c757d; padding: 5px; border-radius: 5px;"> <!--START-OF-CARD-BODY-->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#f5f5f4" class="bi bi-laptop" viewBox="0 0 16 16">
+            <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"/>
+          </svg>
+          </span> <span style="font-size: 24px;">Edit Device</span> </span> 
+          
+          <!--START-OF-EDIT-FORM-->
+          <label for="editDeviceSerial" class="form-label">Serial Number*</label>
+          <input type="text" id="editDeviceSerial" class="form-control" placeholder="54KJJH2">
+          <label for="editDeviceAsset" class="form-label">Asset Tag*</label>
+          <input type="text" id="editDeviceAsset" class="form-control" placeholder="336340">
+          <label class="form-label" for="editDeviceLocation">Location*</label>
+          <select class="form-select" id="editDeviceLocation">
+            <option value="1">SJDLC</option>
+          </select>
+          <div class="row">
+            <div class="col">
+              <label for="editDeviceUser" class="form-label">User</label>
+              <select class="form-select" id="editDeviceUser">
+                <option value="1">jdoe John Doe</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label" for="editDeviceStatus">Status*</label>
+              <select class="form-select" id="editDeviceStatus">
+                <option selected value="checked in">Checked In</option>
+                <option value="checked out">Checked Out</option>
+                <option value="deploying">Deploying</option>
+                <option value="surplused">Surplused</option>
+                <option value="sold">Sold</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-9">
+              <label class="form-label" for="editDeviceTMA">Current TMA*</label>
+              <input type="search" id="editDeviceTMA" class="form-control" placeholder="CS-15255">
+            </div>
+            <div class="col-3">
+              <div style="display: flex; align-items: center; justify-content: center; padding: 0px;">
+                <label class="form-label" for="editOwnsEDRRP">EDRRP*</label>
+              </div>
+              <div class="form-check"> <span style="display: flex; align-items: center; justify-content: center; padding: 0px;">
+                <input class="form-check-input customCheckbox" type="checkbox" value="" id="editOwnsEDRRP">
+                </span> </div>
+            </div>
+          </div>
+          <label for="deviceEditMAC" class="form-label">MAC Address</label>
+          <input type="text" id="deviceEditMAC" class="form-control" placeholder="50:9A:4C:44:55:7A">
+          <label for="editDeviceModel" class="form-label">Model*</label>
+          <select class="form-select" id="editDeviceModel">
+            <option selected>Apple MacBook Air (13-inch M2, 2022)</option>
+          </select>
+          <label for="editDeviceOS" class="form-label">Operating System*</label>
+          <select class="form-select" id="editDeviceOS">
+            <option value="1">MacOS</option>
+          </select>
+          <label for="editDeviceFleet" class="form-label">Fleet Name</label>
+          <select class="form-select" id="editDeviceFleet">
+            <option value="1">Building Purchased</option>
+          </select>
+          <label for="editDeviceFunding" class="form-label">Funding Source</label>
+          <select class="form-select" id="editDeviceFunding">
+            <option value="1">Federal Programs</option>
+          </select>
+          <label for="editDeviceRole" class="form-label">Role</label>
+          <select class="form-select" id="editDeviceRole">
+            <option value="1">Staff</option>
+          </select>
+          <label for="editDeviceRequisition" class="form-label">Requisition</label>
+          <select class="form-select" id="editDeviceRequisition">
+            <option value="1">51554</option>
+          </select>
+          <label for="editDeviceDescription" class="form-label">Description</label>
+          <textarea class="form-control" id="editDeviceDescription"></textarea>
+          <label for="editDeviceTickets" class="form-label">Tickets</label>
+          <select class="selectpicker" data-style="multiselectColor" multiple id="deviceEditTickets" data-live-search="true">
+            <option value="1">123123</option>
+          </select>
+          <label for="editDeviceTags" class="form-label">Tags</label>
+          <select class="selectpicker" data-style="multiselectColor" multiple id="deviceEditTags" data-live-search="true">
+            <option value="1">ashley'sdesk</option>
+          </select>
+          <hr>
+          <button type="button" class="btn btn-yes">-Apply Changes-</button>
+          <!--END-OF-EDIT-FORM--> 
+        </div>
+        <!--END-OF-CARD-BODY--> 
+      </div>
+      <!--END-OF-DEVICE-DETAILS--> 
+      <!-- InstanceEndEditable --> </div>
+    <!--END-OF-RIGHT-COL--> 
+    
+  </div>
+  <!--END-OF-ROW-DIV--> 
+</div>
+<!--END-OF-CONTAINER--> 
+
+<!--TEMPLATE-MODALS-START--> 
+<!--ADD-LOCATION-MODAL-START-->
+<div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+          <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H3Zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Location</span></span> </div>
+      <div class="modal-body"> Please submit the new Location's full name.
+        <hr>
+        <label for="addLocationName" class="form-label">Location Name*</label>
+        <input type="text" id="addLocationName" class="form-control" placeholder="Lincoln High School">
+        <label for="addLocationAddress" class="form-label" style="margin-top: 2%;">Location Address*</label>
+        <input type="text" id="addLocationAddress" class="form-control" placeholder="2229 J St, Lincoln, NE 68510">
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New location</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-LOCATION-MODAL-END--> 
+
+<!--ADD-FLEET-MODAL-START-->
+<div class="modal fade" id="addFleetModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
+          <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Fleet</span></span> </div>
+      <div class="modal-body"> Please submit the new Fleet's full name.
+        <hr>
+        <label for="addFleetName" class="form-label">Fleet Name*</label>
+        <input type="text" id="addFleetName" class="form-control" placeholder="Building Purchased">
+        <label for="addFleetDescription" class="form-label" style="margin-top: 2%;">Fleet Description</label>
+        <textarea class="form-control" id="addFleetDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Fleet</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-FLEET-MODAL-END--> 
+
+<!--ADD-ROLE-MODAL-START-->
+<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Role</span></span> </div>
+      <div class="modal-body"> Please submit the new Role's full name.
+        <hr>
+        <label for="addRoleName" class="form-label">Role Name*</label>
+        <input type="text" id="addRoleName" class="form-control" placeholder="Staff">
+        <label for="addRoleDescription" class="form-label" style="margin-top: 2%;">Role Description</label>
+        <textarea class="form-control" id="addRoleDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Role</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-ROLE-MODAL-END--> 
+
+<!--ADD-FUNDING-MODAL-START-->
+<div class="modal fade" id="addFundingModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+          <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Funding Source</span></span> </div>
+      <div class="modal-body"> Please submit the new Funding Source's full name.
+        <hr>
+        <label for="addFundingName" class="form-label">Funding Source Name*</label>
+        <input type="text" id="addFundingName" class="form-control" placeholder="Federal Programs">
+        <label for="addFundingDescription" class="form-label" style="margin-top: 2%;">Funding Source Description</label>
+        <textarea class="form-control" id="addFundingDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Funding Source</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-FUNDING-MODAL-END--> 
+
+<!--END-OF-TEMPLATE-MODALS--> 
+<!-- InstanceBeginEditable name="modalEdit" --> 
+<!--DELETE-MODAL-START-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0" style="background-color: #d02030 !important;"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #aa1f2e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Delete Device 123123?</span></span> </div>
+      <div class="modal-body">This record will be permanently deleted from our list of devices. This will delete any TMA/DLT records associated with the device as well.  If an error was made, we suggest instead editing the record.</div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-no" data-bs-toggle="modal">Delete Device</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END-OF-DELETE MODAL--> 
+<!--ADD-TAG-MODAL-START-->
+<div class="modal fade" id="addTagModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-tag-fill" viewBox="0 0 16 16">
+          <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Tag</span></span> </div>
+      <div class="modal-body"> Please submit a name for this Tag.  Each tag has a unique name, so duplicates will not be accepted.  Please avoid spaces to limit the amount of duplicate tags.
+        <hr>
+        <label for="addTagName" class="form-label">Tag Name*</label>
+        <input type="text" id="addTagName" class="form-control" placeholder="ashley'sdesk">
+        <label for="addTagDescription" class="form-label" style="margin-top: 2%;">Tag Description</label>
+        <textarea class="form-control" id="addTagDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Tag</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-TAG-MODAL-END--> 
+
+<!--ADD-TICKET-MODAL-START-->
+<div class="modal fade" id="addTicketModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+          <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5Zm4-1v1h1v-1H4Zm1 3v-1H4v1h1Zm7 0v-1h-1v1h1Zm-1-2h1v-1h-1v1Zm-6 3H4v1h1v-1Zm7 1v-1h-1v1h1Zm-7 1H4v1h1v-1Zm7 1v-1h-1v1h1Zm-8 1v1h1v-1H4Zm7 1h1v-1h-1v1Z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Ticket</span></span> </div>
+      <div class="modal-body"> Please submit the Ticket's number.
+        <hr>
+        <label for="addTicketNumber" class="form-label">Ticket Number*</label>
+        <input type="text" id="addTicketNumber" class="form-control" placeholder="254983">
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Ticket</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-TICKET-MODAL-END--> 
+
+<!-- InstanceEndEditable --> 
+
+<!--MAIN-END---------------------------------------------------------------------------------> 
+<!-- InstanceBeginEditable name="endImports" --> 
+<!--IMPORTS-START--> 
+<!--BOOTSTRAP-TABLE--> 
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+<script src="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.js"></script> 
+<!--BOOTSTRAP-TABLE-END--> 
+<!--BOOTSTRAP-TABLE-FILTER--> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js"></script> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script> 
+<!--BOOTSTRAP-TABLE-FILTER-END--> 
+<!--TABLE-COOKIE--> 
+<script src="bootstrap-table/dist/extensions/cookie/bootstrap-table-cookie.js"></script> 
+<script src="bootstrap-table/dist/extensions/cookie/bootstrap-table-cookie.min.js"></script> 
+<!--END-OF-TABLE-COOKIE--> 
+<!--MULTI-SELECT--> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script> 
+<!--END-OF-MULTI-SELECT--> 
+<!--IMPORTS-END--> 
+<script>
+	var tooltipList1 = [].slice.call(document.querySelectorAll('[data-bs-toggle = "tooltip"]'))  
+	var tooltipList2 = tooltipList1.map(function (tooltipTriggerfun) {  
+  	return new bootstrap.Tooltip(tooltipTriggerfun)  
+	})  
+</script> 
+<!-- InstanceEndEditable -->
+</body>
+<!-- InstanceEnd -->
+</html>

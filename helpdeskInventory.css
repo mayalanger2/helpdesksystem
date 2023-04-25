@@ -1,0 +1,187 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Inter:wght@500&family=Roboto+Mono:wght@500&display=swap');
+body {
+  color: #0d0d06 !important;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto Mono', monospace;
+  background-color: #BBBBB3;
+}
+a:hover, button:hover {
+  color: #fafaf0 !important;
+}
+::placeholder {
+	color: darkgray !important;
+	opacity: .5;
+}
+#mainRow {
+  padding: 0;
+}
+#mainContainer {
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  margin: 0 1% 0 1%;
+  width: 98%;
+}
+.card-header a {
+  color: #0D0D06;
+}
+.modal-header {
+  background-color: #047940;
+}
+.modalHeadTitle {
+  font-size: 25px;
+  padding-left: 5px;
+  color: #fafaf0;
+}
+input, select, textarea {
+  border: none !important;
+  /*background-color: #dfdfde !important;*/
+  background-color: #E7E7DC !important;
+}
+.bootstrap-select {
+  width: 100% !important;
+}
+/*NAVBAR*/
+.navbar {
+  background-color: #37474f;
+  border-top-left-radius: 15px;
+}
+.navbar a {
+  color: #fafaf0;
+}
+.navbar .nav-item {
+  margin-bottom: 0;
+  list-style-type: none;
+}
+.nav-link {
+  color: #0d0d06;
+}
+/*END-OF-NAVBAR*/
+/*BUTTONS*/
+.btn-neutral {
+  background-color: #62727b;
+  color: #fafaf0;
+  margin: 2px;
+}
+.btn-no {
+  background-color: #d02030;
+  color: #fafaf0;
+  margin: 2px;
+}
+.btn-yes {
+  background-color: #047940;
+  color: #fafaf0;
+  margin: 2px;
+}
+.btn-yes:hover {
+  background-color: #1c503e;
+}
+.btn-no:hover {
+  background-color: #aa1f2e;
+}
+.btn-neutral:hover {
+  background-color: #37474f;
+}
+.btn-form {
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+/*END-OF-BUTTONS*/
+/*LEFTCOL*/
+.leftCol {
+  background-color: #fafaf0;
+  padding: 0;
+}
+/*
+.leftCol .bootstrap-select {
+  width: 70% !important;
+}*/
+.leftCol .btn-sm {
+}
+.leftColHeader {
+  padding: 10px;
+}
+.leftColHeader label {
+  padding-bottom: 0px;
+  padding-top: 10px;
+  margin: 0;
+}
+.leftColHeader input, select {
+  padding: 5px;
+}
+.leftColHeader .btn-yes {
+  margin-top: 20px;
+}
+.customCheckbox {
+  margin: 0;
+  height: 2em;
+  width: 2em;
+  background-color: #62727b !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: #62727b;
+}
+.nav-pills .nav-link:hover {
+  color: #0d0d06 !important;
+}
+.nav-link.active:hover {
+  color: #fafaf0 !important;
+  background-color: #37474f;
+}
+.form-check-input {
+  background-color: #6c757d;
+}
+.bootstrap-table .fixed-table-toolbar {
+  background-color: #37474f;
+  padding: 10px;
+  border-top-right-radius: 10px;
+}
+.bootstrap-table .fixed-table-container {
+  background-color: #fafaf0;
+}
+.bootstrap-table .fixed-table-container .table thead {
+  background-color: #fafaf0;
+}
+.bootstrap-table .fixed-table-container .table thead th {
+  padding: 10px;
+}
+.deviceTag {
+  background-color: #6c757d;
+  padding-bottom: 7px !important;
+}
+#deviceTable .form-check-input {
+  background-color: #0d0d06;
+}
+#tmaTable .form-check-input {
+  background-color: #0d0d06;
+}
+/*END-OF-LEFTCOL*/
+/*RIGHTCOL*/
+.rightCol {
+  background-color: #fafaf0;
+  /*box-shadow: #222930 0px 0px 60px -10px inset;*/
+  border-bottom-right-radius: 15px;
+  color: #fafaf0;
+}
+.rightCol label {
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+#deviceDetailsCard {
+  color: #37474f;
+  background-color: #fafaf0;
+  padding: 10px;
+  margin: 5% 0 2% 0;
+  overflow-y: auto !important;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.multiselectColor {
+  background-color: #E7E7DC !important;
+}
+.multiselectColor:hover {
+  color: #0d0d06 !important;
+}
+/*END-OF-RIGHTCOL*/

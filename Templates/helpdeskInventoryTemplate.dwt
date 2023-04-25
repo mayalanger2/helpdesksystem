@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Help Desk Template</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!--IMPORTS-START--> 
+<!--BOOTSTRAP-5-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--BOOTSTRAP-TABLE-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.css">
+<!--END-OF-BOOTSTRAP-TABLE--> 
+<!--TABLE-FILTER--> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.css"></script> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.css"></script> 
+<!--END-OF-TABLE-FILTER--> 
+<!--MULTISELECT-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css">
+<!--END-OF-MULTISELECT--> 
+<!--MY-CSS-->
+<link rel="stylesheet" href="helpdeskInventory.css">
+
+<!--END-OF-MY-CSS--> 
+
+<!--IMPORTS-END--> 
+
+<!--SCRIPT-START--> 
+<script>
+	$(function() {
+		$('#deviceTable').bootstrapTable()
+	})
+</script> 
+<!--SCRIPT-END-->
+<!-- TemplateEndEditable -->
+</head>
+<body>
+<!--MAIN-START--------------------------------------------------------------------------------->
+
+<div class="container-fluid" id="mainContainer"> <!--START-OF-CONTAINER-->
+  <div class="row" id="mainRow"> <!--START-OF-ROW-DIV-->
+    
+    <nav class="navbar"> <!--START-OF-NAVBAR-->
+      <div class="container-fluid"> <a class="navbar-brand" href="#"> <img src="lpsLogoWhite.png" alt="" width="50px" height="50px"> </a>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addLocationModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+            <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H3Zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Z"/>
+          </svg>
+          Locations</a></li>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addFleetModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
+            <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+          </svg>
+          Fleets</a></li>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+          </svg>
+          Roles</a></li>
+        <li class="nav-item"> <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addFundingModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+            <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
+          </svg>
+          Funding</a></li>
+      </div>
+    </nav>
+    <!--END-OF-NAVBAR-->
+    
+    <div class="col leftCol"> <!--START-OF-LEFT-COL-->
+      <div class="leftColHeader card-text-center"> <!--START-OF-LEFT-COL-HEADER-->
+        
+        <div class="card-header"> <!--START-OF-CARD-HEADER--> 
+          <!-- TemplateBeginEditable name="cardHeaderEdit" -->cardHeaderEdit<!-- TemplateEndEditable --> </div>
+        <!--END-OF-CARD-HEADER-->
+        
+        <div class="card-body tab-content"> <!--START-OF-CARD-BODY--> 
+          <!-- TemplateBeginEditable name="cardBodyEdit" -->cardBodyEdit<!-- TemplateEndEditable --> </div>
+        <!--END-OF-CARD-BODY--> 
+        
+      </div>
+      <!--END-OF-LEFT-COL-HEADER-->
+      
+      <div id="deviceToolbar"> <!--START-OF-TOOLBAR--> 
+      </div>
+      <!--END-OF-TOOLBAR--> 
+      
+      <!--START-OF-TABLE-->
+      <table data-toggle="table" id="deviceTable" data-toolbar="#deviceToolbar" data-search="true" data-show-refresh="true" data-click-to-select="true" data-id-field="id" data-show-columns="true" data-filter-control="true" data-show-search-clear-button="true" data-filter-control-multiple-search="true" data-filter-control-multiple-search-delimiter="|">
+        <thead>
+          <!--TABLE-HEAD-->
+          <tr>
+            <th data-align="center">#</th>
+            <th data-align="center">Actions</th>
+            <!-- TemplateBeginEditable name="tableHeadEdit" -->tableHeadEdit<!-- TemplateEndEditable --> </tr>
+        </thead>
+        <!--END-OF-TABLE-HEAD-->
+        
+        <tbody>
+          <!--TABLE-BODY--> 
+        <!-- TemplateBeginEditable name="tableBodyEdit" -->tableBodyEdit<!-- TemplateEndEditable -->
+        </tbody>
+        
+        
+        <!--END-OF-TABLE-BODY-->
+        
+      </table>
+      <!--END-OF-TABLE--> 
+    </div>
+    <!--END-OF-LEFT-COL-->
+    
+    <div class="col rightCol d-none d-xl-block d-xxl-block"><!--START-OF-RIGHT-COL--> 
+      <!-- TemplateBeginEditable name="rightColEdit" -->rightColEdit<!-- TemplateEndEditable --> </div>
+    <!--END-OF-RIGHT-COL--> 
+    
+  </div>
+  <!--END-OF-ROW-DIV--> 
+</div>
+<!--END-OF-CONTAINER--> 
+
+<!--TEMPLATE-MODALS-START--> 
+<!--ADD-LOCATION-MODAL-START-->
+<div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+          <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H3Zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Location</span></span> </div>
+      <div class="modal-body"> Please submit the new Location's full name.
+        <hr>
+        <label for="addLocationName" class="form-label">Location Name*</label>
+        <input type="text" id="addLocationName" class="form-control" placeholder="Lincoln High School">
+        <label for="addLocationAddress" class="form-label" style="margin-top: 2%;">Location Address*</label>
+        <input type="text" id="addLocationAddress" class="form-control" placeholder="2229 J St, Lincoln, NE 68510">
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New location</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-LOCATION-MODAL-END--> 
+
+<!--ADD-FLEET-MODAL-START-->
+<div class="modal fade" id="addFleetModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
+          <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Fleet</span></span> </div>
+      <div class="modal-body"> Please submit the new Fleet's full name.
+        <hr>
+        <label for="addFleetName" class="form-label">Fleet Name*</label>
+        <input type="text" id="addFleetName" class="form-control" placeholder="Building Purchased">
+        <label for="addFleetDescription" class="form-label" style="margin-top: 2%;">Fleet Description</label>
+        <textarea class="form-control" id="addFleetDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Fleet</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-FLEET-MODAL-END--> 
+
+<!--ADD-ROLE-MODAL-START-->
+<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Role</span></span> </div>
+      <div class="modal-body"> Please submit the new Role's full name.
+        <hr>
+        <label for="addRoleName" class="form-label">Role Name*</label>
+        <input type="text" id="addRoleName" class="form-control" placeholder="Staff">
+        <label for="addRoleDescription" class="form-label" style="margin-top: 2%;">Role Description</label>
+        <textarea class="form-control" id="addRoleDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Role</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-ROLE-MODAL-END--> 
+
+<!--ADD-FUNDING-MODAL-START-->
+<div class="modal fade" id="addFundingModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0"> <span style="display: inline-flex; gap: 5px; align-items: center;"> <span style="display: flex; align-items: center; justify-content: center; padding: 5px; background-color: #1c503e; border-radius: 5px; color: #fafaf0"> <!--START-OF-CARD-BODY-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+          <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
+        </svg>
+        </span> <span class="modalHeadTitle">Add a New Funding Source</span></span> </div>
+      <div class="modal-body"> Please submit the new Funding Source's full name.
+        <hr>
+        <label for="addFundingName" class="form-label">Funding Source Name*</label>
+        <input type="text" id="addFundingName" class="form-control" placeholder="Federal Programs">
+        <label for="addFundingDescription" class="form-label" style="margin-top: 2%;">Funding Source Description</label>
+        <textarea class="form-control" id="addFundingDescription"></textarea>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-neutral" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-yes" data-bs-toggle="modal">Add New Funding Source</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--ADD-FUNDING-MODAL-END--> 
+
+<!--END-OF-TEMPLATE-MODALS--> 
+<!-- TemplateBeginEditable name="modalEdit" -->modalEdit<!-- TemplateEndEditable --> 
+
+<!--MAIN-END---------------------------------------------------------------------------------> 
+<!-- TemplateBeginEditable name="endImports" --> 
+<!--IMPORTS-START--> 
+<!--BOOTSTRAP-TABLE--> 
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+<script src="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.js"></script> 
+<!--BOOTSTRAP-TABLE-END--> 
+<!--BOOTSTRAP-TABLE-FILTER--> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js"></script> 
+<script src="bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script> 
+<!--BOOTSTRAP-TABLE-FILTER-END--> 
+<!--MULTI-SELECT--> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script> 
+<!--END-OF-MULTI-SELECT--> 
+<!--IMPORTS-END--> 
+<script>
+	var tooltipList1 = [].slice.call(document.querySelectorAll('[data-bs-toggle = "tooltip"]'))  
+	var tooltipList2 = tooltipList1.map(function (tooltipTriggerfun) {  
+  	return new bootstrap.Tooltip(tooltipTriggerfun)  
+	})  
+</script> 
+<!-- TemplateEndEditable -->
+</body>
+</html>
