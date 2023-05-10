@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>helpdesk</string>
+			<key>host</key>
+			<string>lucee.lps.net</string>
+			<key>name</key>
+			<string>lucee</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>ssh_host</key>
+			<string>scout.lps.net</string>
+			<key>ssh_keyLocation</key>
+			<string></string>
+			<key>ssh_keyLocationEnabled</key>
+			<integer>0</integer>
+			<key>ssh_user</key>
+			<string>mlanger2</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSSHTunnelConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>mlanger2</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
+			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRk
+			YXRhgAGvEA8LDBkaGxwdIyQlLDA0OT5VJG51bGzTDQ4PEBQYV05T
+			LmtleXNaTlMub2JqZWN0c1YkY2xhc3OjERITgAKAA4AEoxUWF4AF
+			gAaACoAOVHR5cGVUcm93c1RrZXlzXxAmU2VsZWN0aW9uRGV0YWls
+			VHlwZVByaW1hcnlLZXllZERldGFpbHPTDQ4PHiAioR+AB6EhgAiA
+			CVxHQ0hWOFMzQUhMRjkJ0iYnKClaJGNsYXNzbmFtZVgkY2xhc3Nl
+			c18QE05TTXV0YWJsZURpY3Rpb25hcnmjKCorXE5TRGljdGlvbmFy
+			eVhOU09iamVjdNIODy0voS6AC4AN0g8xMjNZTlMuc3RyaW5ngAxd
+			ZGV2aWNlX3NlcmlhbNImJzU2XxAPTlNNdXRhYmxlU3RyaW5nozU3
+			OFhOU1N0cmluZ1hOU09iamVjdNImJzo7Xk5TTXV0YWJsZUFycmF5
+			ozo8PVdOU0FycmF5WE5TT2JqZWN00iYnKj+iKkBYTlNPYmplY3QA
+			CAARABoAJAApADIANwBJAEwAUQBTAGUAawByAHoAhQCMAJAAkgCU
+			AJYAmgCcAJ4AoACiAKcArACxANoA4QDjAOUA5wDpAOsA+AD5AP4B
+			CQESASgBLAE5AUIBRwFJAUsBTQFSAVwBXgFsAXEBgwGHAZABmQGe
+			Aa0BsQG5AcIBxwHKAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAA
+			AAAAAdM=
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{1, 0}, {1742, 621}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>table</key>
+			<string>DEVICE</string>
+			<key>view</key>
+			<string>SP_VIEW_CONTENT</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>214</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT device_serial, device_asset, location_name, device_mac_address, model_name, os_name, fleet_name, funding_name, role_name, requisition_name, device_status, device_description, user_username, device_edrrp, device_tma
+WHERE device_serial = 'GCHV8S3AHLF9'
+ORDER BY device_asset ASC</string>
+		<string>SELECT device_serial, device_asset, location_name, device_mac_address, model_name, os_name, fleet_name, funding_name, role_name, requisition_name, device_status, device_description, user_username, device_edrrp, device_tma
+WHERE DEVICE.device_serial = 'GCHV8S3AHLF9'
+ORDER BY device_asset ASC</string>
+		<string>SELECT device_serial, device_asset, DEVICE.location_name, device_mac_address, model_name, os_name, fleet_name, funding_name, role_name, requisition_name, device_status, device_description, user_username, device_edrrp, device_tma
+			  WHERE DEVICE.device_serial = 'GCHV8S3AHLF9'
+			  ORDER BY device_asset ASC</string>
+		<string>SELECT DEVICE.device_serial, device_asset, DEVICE.location_name, device_mac_address, model_name, os_name, fleet_name, funding_name, role_name, requisition_name, device_status, device_description, user_username, device_edrrp, device_tma
+FROM DEVICE JOIN PIN ON DEVICE.device_serial = PIN.device_serial
+WHERE DEVICE.device_serial = 'GCHV8S3AHLF9'
+ORDER BY device_asset ASC</string>
+		<string>SELECT DEVICE.device_serial, device_asset, DEVICE.location_name, device_mac_address, model_name, os_name, fleet_name, funding_name, role_name, requisition_name, device_status, device_description, user_username, device_edrrp, device_tma
+FROM DEVICE LEFT JOIN PIN ON DEVICE.device_serial = PIN.device_serial
+WHERE DEVICE.device_serial = 'GCHV8S3AHLF9'
+ORDER BY device_asset ASC</string>
+		<string>SELECT device_serial, device_asset, DEVICE.location_name, device_mac_address, model_name, os_name, fleet_name, funding_name, role_name, requisition_name, device_status, device_description, user_username, device_edrrp, device_tma
+FROM DEVICE LEFT JOIN PIN ON DEVICE.device_serial = PIN.device_serial
+WHERE DEVICE.device_serial = 'GCHV8S3AHLF9'
+ORDER BY device_asset ASC</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_os FOREIGN KEY (`os_name`) REFERENCES OPERATINGSYSTEM (os_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_os FOREIGN KEY (`os_name`) REFERENCES OPERATYINGSYSTEM (os_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_model FOREIGN KEY (`model_name`) REFERENCES MODEL (model_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_location FOREIGN KEY (`location_name`) REFERENCES LOCATION (location_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_fleet FOREIGN KEY (`fleet_name`) REFERENCES FLEET (fleet_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_role FOREIGN KEY (`role_name`) REFERENCES ROLE (role_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_requisition FOREIGN KEY (`requisition_name`) REFERENCES REQUISITION (requisition_name) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD CONSTRAINT fk_device_user FOREIGN KEY (`user_username`) REFERENCES USER (user_username) ON DELETE CASCADE ON UPDATE CASCADE</string>
+		<string>ALTER TABLE DEVICE
+ADD FOREIGN KEY (user_username) REFERENCES USER(user_username)</string>
+		<string>SELECT device_serial, LOCATION.location_name, location_address
+	FROM DEVICE
+	JOIN LOCATION ON DEVICE.location_name = LOCATION.location_name
+	WHERE device_serial != "GCHV8S3AHLF9"</string>
+		<string>SELECT device_serial, LOCATION.location_addresslocation_name, location_address
+	FROM DEVICE
+	right JOIN LOCATION ON DEVICE.location_name = LOCATION.location_name
+	WHERE device_serial != "GCHV8S3AHLF9"</string>
+		<string>SELECT device_serial, DEVICE.location_name, location_address
+	FROM DEVICE
+	right JOIN LOCATION ON DEVICE.location_name = LOCATION.location_name
+	WHERE device_serial != "GCHV8S3AHLF9"</string>
+		<string>SELECT device_serial, DEVICE.location_name, location_address
+	FROM DEVICE
+	LEFT JOIN LOCATION ON DEVICE.location_name = LOCATION.location_name
+	WHERE device_serial != "GCHV8S3AHLF9"</string>
+		<string>SELECT device_serial, DEVICE.location_name, location_address
+	FROM DEVICE
+	OUTER JOIN LOCATION ON DEVICE.location_name = LOCATION.location_name
+	WHERE device_serial != "GCHV8S3AHLF9"</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.68-MariaDB</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
